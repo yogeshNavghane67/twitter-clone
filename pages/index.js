@@ -24,7 +24,7 @@ export default function Home({newsResults,randomUsersResults}) {
       <Feed />
 
       {/* Widgets */}
-      <Widgets newsResult={newsResults.articules} randomUsersResults={randomUsersResults}/>
+      <Widgets newsResults={newsResults.articles} randomUsersResults={randomUsersResults.results}/>
       {/* Modal */}
     </main>
    </div>
@@ -32,7 +32,7 @@ export default function Home({newsResults,randomUsersResults}) {
 }
 
 export async function getServerSideProps(){
-  const newsResult = await fetch("https://saurav.tech/NewsAPI/top-headlines/category/business/us.json")
+  const newsResults = await fetch("https://saurav.tech/NewsAPI/top-headlines/category/business/us.json")
 .then((res) => res.json());
 
 const randomUsersResults = await fetch(
