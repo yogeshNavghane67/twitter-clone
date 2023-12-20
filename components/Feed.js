@@ -1,51 +1,42 @@
 import { SparklesIcon } from "@heroicons/react/outline";
 import Post from "./Post";
-
+import Input from "./input";
 
 export default function Feed() {
- const post = [
+  const post = [
     {
-        id:"1",
-        name:"Sagar Kakade",
-        username:"sagar345", 
-        userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
-        img: "https://i.pinimg.com/originals/21/e3/50/21e3503ea8f1016be1b0085805db05d2.jpg",
-        text:"nice setup!!",
-        timestamp: "4 hours ago",
+      id: "1",
+      name: "Sagar Kakade",
+      username: "sagar345",
+      userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
+      img: "https://i.pinimg.com/originals/21/e3/50/21e3503ea8f1016be1b0085805db05d2.jpg",
+      text: "nice setup!!",
+      timestamp: "4 hours ago",
     },
     {
-        id:"1",
-        name:"Ujjwal Tayade",
-        username:"ujjwal89", 
-        userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3CQDEO83utmrNSsVt4QtJrmGqM2Dg0gej5g&usqp=CAU",
-        text:"beauty!!",
-        timestamp: "9 hours ago",
+      id: "1",
+      name: "Ujjwal Tayade",
+      username: "ujjwal89",
+      userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3CQDEO83utmrNSsVt4QtJrmGqM2Dg0gej5g&usqp=CAU",
+      text: "beauty!!",
+      timestamp: "9 hours ago",
     },
-];
+  ];
 
-return (
+  return (
     <div className="xl:ml-[370px] border-l border-r border-gray-200  xl:min-w-[576px] sm:ml-[73px] flex-grow max-w-xl">
       <div className="flex py-2 px-3 sticky top-0 z-50 bg-white border-b border-gray-200">
         <h2 className="text-lg sm:text-xl font-bold cursor-pointer">Home</h2>
-         <div className="hoverEffect flex items-center justify-center px-0 ml-auto w-9 h-9">
+        <div className="hoverEffect flex items-center justify-center px-0 ml-auto w-9 h-9">
           <SparklesIcon className="h-5" />
         </div>
       </div>
+      <Input />
 
       {post.map((post) => (
-        //   <motion.div
-        //     key={post.id}
-        //     initial={{ opacity: 0 }}
-        //     animate={{ opacity: 1 }}
-        //     exit={{ opacity: 0 }}
-        //     transition={{ duration: 1 }}
-        //   >
-            <Post key={post.id}  post={post} />
-        //   </motion.div>
-        ))}
-
+        <Post key={post.id} post={post} />
+      ))}
     </div>
-)
+  );
 }
-
