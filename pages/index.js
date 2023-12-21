@@ -3,6 +3,8 @@ import Sidebar from '@/components/Sidebar'
 import Widgets from '@/components/Widgets'
 import Head from 'next/head'
 import Image from 'next/image'
+import CommentModal from "../components/CommentModal";
+
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -25,7 +27,9 @@ export default function Home({newsResults,randomUsersResults}) {
 
       {/* Widgets */}
       <Widgets newsResults={newsResults.articles} randomUsersResults={randomUsersResults.results}/>
+      
       {/* Modal */}
+       <CommentModal />
     </main>
    </div>
   )
