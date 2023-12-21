@@ -1,28 +1,43 @@
 import { SparklesIcon } from "@heroicons/react/outline";
 import Post from "./Post";
 import Input from "./Input";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "../firebase";
+//import { AnimatePresence, motion } from "framer-motion";
 
 export default function Feed() {
-  const post = [
-    {
-      id: "1",
-      name: "Sagar Kakade",
-      username: "sagar345",
-      userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
-      img: "https://i.pinimg.com/originals/21/e3/50/21e3503ea8f1016be1b0085805db05d2.jpg",
-      text: "nice setup!!",
-      timestamp: "4 hours ago",
-    },
-    {
-      id: "1",
-      name: "Ujjwal Tayade",
-      username: "ujjwal89",
-      userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3CQDEO83utmrNSsVt4QtJrmGqM2Dg0gej5g&usqp=CAU",
-      text: "beauty!!",
-      timestamp: "9 hours ago",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+  useEffect(
+    () =>
+      onSnapshot(
+        query(collection(db, "posts"), orderBy("timestamp", "desc")),
+        (snapshot) => {
+          setPosts(snapshot.docs);
+        }
+      ),
+    []
+  );
+  // const post = [
+  //   {
+  //     id: "1",
+  //     name: "Sagar Kakade",
+  //     username: "sagar345",
+  //     userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
+  //     img: "https://i.pinimg.com/originals/21/e3/50/21e3503ea8f1016be1b0085805db05d2.jpg",
+  //     text: "nice setup!!",
+  //     timestamp: "4 hours ago",
+  //   },
+  //   {
+  //     id: "1",
+  //     name: "Ujjwal Tayade",
+  //     username: "ujjwal89",
+  //     userImg: "https://avatars.githubusercontent.com/u/117041814?v=4",
+  //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3CQDEO83utmrNSsVt4QtJrmGqM2Dg0gej5g&usqp=CAU",
+  //     text: "beauty!!",
+  //     timestamp: "9 hours ago",
+  //   },
+  // ];
 
   return (
     <div className="xl:ml-[370px] border-l border-r border-gray-200  xl:min-w-[576px] sm:ml-[73px] flex-grow max-w-xl">
@@ -34,7 +49,7 @@ export default function Feed() {
       </div>
       <Input />
 
-      {post.map((post) => (
+      {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}
     </div>
