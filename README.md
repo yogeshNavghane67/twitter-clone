@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Demo
+## Twitter clone
 
 ![Screenshot (528)](https://github.com/yogeshNavghane67/twitter-clone/assets/124075039/aa931dc0-69a6-4118-b8af-dbda2b4d4fa0)
 
